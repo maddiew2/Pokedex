@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Sort button clicked!');
         // Toggle dropdown or perform default sorting
         // For simplicity, you can directly call sort functions here
-        sortByName(); // Default sorting
+        // Default sorting
     });
 
     const searchInput = document.getElementById('searchInput');

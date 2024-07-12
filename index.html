@@ -21,25 +21,26 @@
         />
     </head>
     <body>
-        <header>
-            <img src="images/pokeball.png" alt="Pokeball" height="48" width="auto", class="logo">
-            <h1>Pokedex</h1>
-        </header>
-        <main>
-            <div class="container">
-                <div id="search">
-                    <form class="d-flex" id="search-button">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-label">
-                        <button class="btn" type="submit" id="sort-button">
-                            <img src="images/tag.png" alt="Search" height="20" width="auto">
-                        </button>
-                    </form>
+        <div class="container">
+            <header>
+                <img src="images/pokeball.png" alt="Pokeball" height="48" width="auto", class="logo">
+                <h1>Pokedex</h1>
+            </header>
+            <main>
+                <div class="input-group rounded">
+                    
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+                    <span class="button border-0" id="sort-button">
+                        <img src="images/tag.png" alt="Sort" height="24" width="auto"/>
+                    </span>
                 </div>
+
+                
                 <div id="pokedex">
                     <!-- <div class="row"></div> -->
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -56,87 +57,3 @@
         <script src="script.js"></script>
     </body>
 </html>
-
-
-
-
-<!--             
-            <div class="header-top">
-                <img src="images/pokeball.png" alt="Maddie's Recipe Logo" height="48" width="auto", class="logo">
-                <h1>Pokedex</h1>
-            </div>
-            <div class="header-bottom">   
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-            </div> -->
-
-
-            <!-- place navbar here -->
-             <!-- <nav
-                class="navbar navbar-expand-sm navbar-light bg-light"
-             >
-                <div class="container">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button
-                        class="navbar-toggler d-lg-none"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsibleNavId"
-                        aria-controls="collapsibleNavId"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavId">
-                        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#" aria-current="page"
-                                    >Home
-                                    <span class="visually-hidden">(current)</span></a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="dropdownId"
-                                    data-bs-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    >Dropdown</a
-                                >
-                                <div
-                                    class="dropdown-menu"
-                                    aria-labelledby="dropdownId"
-                                >
-                                    <a class="dropdown-item" href="#"
-                                        >Action 1</a
-                                    >
-                                    <a class="dropdown-item" href="#"
-                                        >Action 2</a
-                                    >
-                                </div>
-                            </li>
-                        </ul>
-                        <form class="d-flex my-2 my-lg-0">
-                            <input
-                                class="form-control me-sm-2"
-                                type="text"
-                                placeholder="Search"
-                            />
-                            <button
-                                class="btn btn-outline-success my-2 my-sm-0"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </div>
-             </nav> -->
