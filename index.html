@@ -1,7 +1,9 @@
+<!-- This program connects to the PokéAPI and displays a user-friendly Pokédex interface following the provided Figma mockup. -->
+
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
+        <title>Pokedex</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -20,8 +22,59 @@
     </head>
     <body>
         <header>
+            <img src="images/pokeball.png" alt="Pokeball" height="48" width="auto", class="logo">
+            <h1>Pokedex</h1>
+        </header>
+        <main>
+            <div class="container">
+                <div id="search">
+                    <form class="d-flex" id="search-button">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-label">
+                        <button class="btn" type="submit" id="sort-button">
+                            <img src="images/tag.png" alt="Search" height="20" width="auto">
+                        </button>
+                    </form>
+                </div>
+                <div id="pokedex">
+                    <!-- <div class="row"></div> -->
+                </div>
+            </div>
+        </main>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
+
+
+<!--             
+            <div class="header-top">
+                <img src="images/pokeball.png" alt="Maddie's Recipe Logo" height="48" width="auto", class="logo">
+                <h1>Pokedex</h1>
+            </div>
+            <div class="header-bottom">   
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+            </div> -->
+
+
             <!-- place navbar here -->
-             <nav
+             <!-- <nav
                 class="navbar navbar-expand-sm navbar-light bg-light"
              >
                 <div class="container">
@@ -86,29 +139,4 @@
                         </form>
                     </div>
                 </div>
-             </nav>
-             
-
-        </header>
-        <main></main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-
-        <script src="script.js"></script>
-    </body>
-</html>
-
-
+             </nav> -->
