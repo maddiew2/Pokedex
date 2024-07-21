@@ -2,11 +2,12 @@
 console.log("Hello World!");
 
 let pokemonList = [];
+let searchByNumber = true;
 
-// Fetch list of Pokemon list from PokeAPI
+// Fetch list of Pokemon from PokeAPI
 async function fetchPokemonList() {
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=9');
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
         if (!response.ok) {
             throw new Error('Error fetching list of Pokemon.');
         }
@@ -19,6 +20,9 @@ async function fetchPokemonList() {
     }
 }
 
+
+
+
 // Fetch detailed Pokémon information
 async function fetchPokemonDetails() {
     try {
@@ -30,6 +34,7 @@ async function fetchPokemonDetails() {
             const data = await response.json();
             pokemon.id = data.id;
             pokemon.image = data.sprites.other['official-artwork'].front_default;
+            
         }
     } catch (error) {
         console.error('Could not fetch Pokemon details: ', error);
@@ -73,37 +78,79 @@ function displayPokemon(list) {
     }
 }
 
-// Sorting functions
 function sortByName() {
     pokemonList.sort((a, b) => a.name.localeCompare(b.name));
     displayPokemon(pokemonList);
+    searchByNumber = false;
 }
 
 function sortByNumber() {
     pokemonList.sort((a, b) => a.id - b.id);
     displayPokemon(pokemonList);
+    searchByNumber = true;
 }
 
-// Event listeners
+function searchPokemon(list) {
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchPokemonList();
 
-    const sortButton = document.getElementById('sort-button');
-    sortButton.addEventListener('click', () => {
-        console.log('Sort button clicked!');
-        // Toggle dropdown or perform default sorting
-        // For simplicity, you can directly call sort functions here
-        // Default sorting
-    });
-
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('keypress', async (event) => {
-        if (event.key === 'Enter') {
-            // Perform search logic
-            const searchString = searchInput.value.trim().toLowerCase();
-            const filteredList = pokemonList.filter(pokemon => pokemon.name.includes(searchString));
-            displayPokemon(filteredList);
+    // Event delagation cause buttons are created dynamically
+    document.body.addEventListener('click', (event) => {
+        // Check if the clicked element has the class 'pop-btn num'
+        if (event.target.closest('.pop-btn.num')) {
+            sortByNumber();
+        }
+        // Check if the clicked element has the class 'pop-btn name'
+        else if (event.target.closest('.pop-btn.name')) {
+            sortByName();
         }
     });
+    
+    const searchInput = document.getElementById('form1');
+    const searchClear = document.querySelector('.search-clear');
+
+    searchInput.addEventListener('focus', () => {
+        searchClear.style.display = 'block';
+    })
+
+    searchInput.addEventListener('blur', () => {
+        if (searchInput.value.trim() === '') {
+            searchClear.style.display = 'none';
+        }
+    })
+
+    searchInput.addEventListener('input', () => {
+        let searchQuery = searchInput.value.toLowerCase();
+        if (searchQuery === '') {
+            displayPokemon(pokemonList);
+        }
+        else { 
+            if (searchQuery.startsWith('#')) {
+                searchQuery = searchQuery.substring(1);
+            } 
+
+            if (/^\d+$/.test(searchQuery)) {
+                const filteredList = pokemonList.filter(pokemon => pokemon.id == parseInt(searchQuery, 10));
+                displayPokemon(filteredList);
+            }
+            else {
+                const filteredList = pokemonList.filter(pokemon => pokemon.name.includes(searchQuery));
+                displayPokemon(filteredList);
+            }
+        }
+    });
+    
+    searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        displayPokemon(pokemonList);
+        searchClear.style.display = 'none';
+    });
+
+    const popover = new bootstrap.Popover('.popover-dismiss', {
+        trigger: 'focus'
+    })
 });
 

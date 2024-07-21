@@ -5,8 +5,39 @@
 }
 
 
+.search-clear {
+    z-index: 100;
+    right: 10px;
+    cursor: pointer;
+}
 
 
+.circle {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+}	
+
+
+.sort-by {
+    min-height: 100px; /* Example minimum height */
+    max-height: 200px; /* Example maximum height */
+    height: 10vh;
+
+    min-width: 150px; /* Example minimum width */
+    max-width: 300px; /* Example maximum width */
+    width: 8vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+
+}
+
+
+.popover.bottom .arrow {visibility:hidden;}
 
 
 
