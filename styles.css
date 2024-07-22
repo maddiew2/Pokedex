@@ -147,6 +147,7 @@ main {
     background-color: white;
     transition: transform 0.2s;
     max-height: 230px; /* Sets max height*/
+    cursor: pointer;
 }
 
 .pokemon-card:hover {
@@ -188,3 +189,13 @@ main {
     z-index: 1;
     position: relative;
 }
+
+/*-------------------------------------------- card.html --------------------------------------------*/
+
+.container .card {
+    background-color: white;
+}
+
+
+
+
