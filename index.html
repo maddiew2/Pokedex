@@ -20,12 +20,15 @@
                 <h1>Pokédex</h1>
             </div>
             <div class="header-bottom">
+                <div class="search-icon">
+                    <img src="images/search.png" alt="Search" height="16" width="16"/>  
+                </div>
                 <div class="input-group position-relative d-inline-flex align-items-center">
                     <input type="text" id="form1" class="form-control" placeholder="Search" aria-label="Search"/>
                     <i class="bi bi-x-lg position-absolute search-clear" style="display: none;"></i>
                 </div>
                 <div class="sort-btn">
-                    <a tabindex="0" class="btn btn-lg popover-dismiss" role="button" data-bs-toggle="popover" :popover-style="{background: '#DC0A2D'}"
+                    <a tabindex="0" class="btn btn-lg popover-dismiss" role="button" data-bs-toggle="popover"
                     data-bs-trigger="focus" data-placement="bottom" data-bs-title="Sort by:" data-bs-content="<div class='sort-by'>
                     <a class='btn pop-btn num'><span class='circle'></span>Number</button>   
                     <a class='btn pop-btn name'><span class='circle'></span>Name</button>
