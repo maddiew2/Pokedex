@@ -110,7 +110,7 @@ function displayPokemon(list) {
         name.classList.add('pokemon-card-name');
         let temp = pokemon.name;
         temp = temp.charAt(0).toUpperCase() + temp.slice(1);
-        name.textContent = temp;
+        name.textContent = temp.charAt(0).toUpperCase() + temp.slice(1);
 
         // Append elements
         pokemonCard.appendChild(id);
@@ -234,9 +234,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 function displayPokemonDetails(pokemon) {
-    document.querySelector('.pokemon-info').textContent = pokemon.name;
+    const infoContainer = document.querySelector('.pokemon-info');
+    infoContainer.innerHTML = ''; // Clear any existing content
+    const name = document.createElement('h1');
+    const id = document.createElement('h3');
+    name.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    if (pokemon.id < 10) id.textContent = `#00${pokemon.id}`;
+        else if (pokemon.id < 100) id.textContent = `#0${pokemon.id}`;
+        else id.textContent = `#${pokemon.id}`;
+    infoContainer.appendChild(name);
+    infoContainer.appendChild(id);
     
     // Set the pokemon image
     const pokemonImgContainer = document.querySelector('.pokemon-img');
@@ -260,22 +268,43 @@ function displayPokemonDetails(pokemon) {
     // Set background color based on the first type
     const mainContainer = document.querySelector('.container');
     mainContainer.style.backgroundColor = typeColors[pokemon.types[0]]; // Apply background color
+    const test = document.querySelector('body');
+    test.style.backgroundColor = typeColors[pokemon.types[0]]; // Apply background color
     
     // Create attributes
-    const frameContainer = document.querySelector('.attribute .frame');
-    frameContainer.innerHTML = ''; // Clear any existing content
+    const weightFrame = document.querySelector('.attribute .weightFrame');
+    weightFrame.innerHTML = ''; // Clear any existing content
+    const weightSymbol = document.createElement('img');
+    weightSymbol.classList.add('weight-symbol');
+    weightSymbol.src = 'images/weight.png';
+    weightSymbol.alt = 'Weight symbol';
+    weightSymbol.height = 24;
+    weightSymbol.width = 24;
+    weightFrame.appendChild(weightSymbol);
     const weightDiv = document.createElement('div');
     weightDiv.textContent = `${pokemon.weight} kg`;
-    frameContainer.appendChild(weightDiv);
+    weightFrame.appendChild(weightDiv);
 
+    const heightFrame = document.querySelector('.attribute .heightFrame');
+    heightFrame.innerHTML = ''; // Clear any existing content
+    const heightSymbol = document.createElement('img');
+    heightSymbol.classList.add('height-symbol');
+    heightSymbol.src = 'images/height.png';
+    heightSymbol.alt = 'Weight symbol';
+    heightSymbol.height = 24;
+    heightSymbol.width = 24;
+    heightFrame.appendChild(heightSymbol);
     const heightDiv = document.createElement('div');
     heightDiv.textContent = `${pokemon.height} m`;
-    frameContainer.appendChild(heightDiv);
+    heightFrame.appendChild(heightDiv);
 
+    const moveFrame = document.querySelector('.attribute .moveFrame');
+    moveFrame.innerHTML = ''; // Clear any existing content
     pokemon.moves.forEach(move => {
         const movesDiv = document.createElement('div');
+        movesDiv.classList.add('move-div');
         movesDiv.textContent = `${move}`;
-        frameContainer.appendChild(movesDiv);
+        moveFrame.appendChild(movesDiv);
     });
 
     // Set description
@@ -290,7 +319,9 @@ function displayPokemonDetails(pokemon) {
         statDiv.classList.add('stat-div');
 
         const statValueDiv = document.createElement('div');
-        statValueDiv.textContent = stat.value;
+        if (stat.value < 10) statValueDiv.textContent = `00${stat.value}`;
+        else if (pokemon.id < 100) statValueDiv.textContent = `0${stat.value}`;
+        else statValueDiv.textContent = `${stat.value}`;
         statDiv.appendChild(statValueDiv);
 
         const statBarDiv = document.createElement('div');
@@ -315,3 +346,26 @@ function displayPokemonDetails(pokemon) {
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const overlay = document.getElementById("pokemonOverlay");
+    const runAwayBtn = document.getElementById("runAway");
+    const catchPokemonBtn = document.getElementById("catchPokemon");
+
+    runAwayBtn.addEventListener("click", function() {
+        overlay.style.display = "none";
+    });
+
+    catchPokemonBtn.addEventListener("click", function() {
+        
+        
+        
+        console.log("Attempt to catch the Pokémon!");
+    });
+
+    const newPokemonBtn = document.querySelector(".new-pokemon-btn");
+    newPokemonBtn.addEventListener("click", function() {
+        overlay.style.display = "flex";
+    });
+
+    
+});
